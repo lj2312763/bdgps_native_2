@@ -1,0 +1,3 @@
+rootProject.name = 'bdgps_native'
+
+include ':app'

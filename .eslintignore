@@ -1,0 +1,11 @@
+__tests__/
+ios/
+android/
+**/node_modules
+.flowconfig
+.gitignore
+.gitattributes
+.buckconfig
+.watchmanconfig
+yarn.lock
+
