@@ -18,7 +18,7 @@ import {
 import {Button} from 'antd-mobile';
 import DeviceInfo from 'react-native-device-info'
 // import Storage from 'react-native-storage';
-// import ajax from './src/common/ajax';
+import ajax from './src/common/ajax';
 
 // const instructions = Platform.select({
 // 	ios: 'Press Cmd+R to reload,\n' +
@@ -40,10 +40,8 @@ export default class App extends Component<{}> {
 
 	componentWillMount() {
 		const {rememberInfo} = this;
-		console.log(rememberInfo);
-		let deviceID=DeviceInfo.getDeviceId();
-		let deviceUniqueID=DeviceInfo.getUniqueID();
-		console.log(deviceID,deviceUniqueID);
+		let deviceID = DeviceInfo.getDeviceId();
+		let deviceUniqueID = DeviceInfo.getUniqueID();
 		this.getRemember(rememberInfo);
 	}
 
@@ -56,8 +54,8 @@ export default class App extends Component<{}> {
 			this.removeRemember(rememberInfo)
 		}
 		this.n++;
-		console.log(this.n);
-		console.log(this.state);
+		ajax.get('/login',this.state)
+
 	};
 	rememberMe = () => {
 		let {checked} = this.state;
