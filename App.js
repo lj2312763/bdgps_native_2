@@ -25,11 +25,6 @@ const instructions = Platform.select({
 	android: 'Double tap R on your keyboard to reload,\n' +
 	'Shake or press menu button for dev ',
 });
-
-
-
-
-
 export default class App extends Component<{}> {
 	constructor(props) {
 		super(props);
@@ -44,7 +39,7 @@ export default class App extends Component<{}> {
 
 	componentWillMount() {
 		const {rememberInfo} = this;
-		console.log(rememberInfo)
+		console.log(rememberInfo);
 		this.getRemember(rememberInfo);
 	}
 
@@ -153,7 +148,7 @@ export default class App extends Component<{}> {
 					<Text style={styles.label}>
 						密码:
 					</Text>
-					<TextInput style={styles.input} placeholder="请输入密码" onChangeText={(text) => {
+					<TextInput style={styles.input} placeholder="请输入密码" secureTextEntry={true}  onChangeText={(text) => {
 						this.change('pwd', text)
 					}} value={pwd}/>
 				</View>
