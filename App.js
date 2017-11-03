@@ -16,15 +16,16 @@ import {
 	CheckBox,
 } from 'react-native';
 import {Button} from 'antd-mobile';
+import DeviceInfo from 'react-native-device-info'
 // import Storage from 'react-native-storage';
 // import ajax from './src/common/ajax';
 
-const instructions = Platform.select({
-	ios: 'Press Cmd+R to reload,\n' +
-	'Cmd+D or shake for dev menu',
-	android: 'Double tap R on your keyboard to reload,\n' +
-	'Shake or press menu button for dev ',
-});
+// const instructions = Platform.select({
+// 	ios: 'Press Cmd+R to reload,\n' +
+// 	'Cmd+D or shake for dev menu',
+// 	android: 'Double tap R on your keyboard to reload,\n' +
+// 	'Shake or press menu button for dev ',
+// });
 export default class App extends Component<{}> {
 	constructor(props) {
 		super(props);
@@ -40,6 +41,9 @@ export default class App extends Component<{}> {
 	componentWillMount() {
 		const {rememberInfo} = this;
 		console.log(rememberInfo);
+		let deviceID=DeviceInfo.getDeviceId();
+		let deviceUniqueID=DeviceInfo.getUniqueID();
+		console.log(deviceID,deviceUniqueID);
 		this.getRemember(rememberInfo);
 	}
 
@@ -148,7 +152,7 @@ export default class App extends Component<{}> {
 					<Text style={styles.label}>
 						密码:
 					</Text>
-					<TextInput style={styles.input} placeholder="请输入密码" secureTextEntry={true}  onChangeText={(text) => {
+					<TextInput style={styles.input} placeholder="请输入密码" secureTextEntry={true} onChangeText={(text) => {
 						this.change('pwd', text)
 					}} value={pwd}/>
 				</View>
