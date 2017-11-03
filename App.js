@@ -34,17 +34,17 @@ export default class App extends Component<{}> {
 			pwd: '',
 			checked: false,
 		};
-		this.n = 0;
 		this.rememberInfo = 'rememberInfo';
 	}
 
 	componentWillMount() {
 		const {rememberInfo} = this;
-		let deviceID = DeviceInfo.getDeviceId();
-		let deviceUniqueID = DeviceInfo.getUniqueID();
 		this.getRemember(rememberInfo);
 	}
 
+	/**
+	 * 登录
+	 */
 	login = () => {
 		const {checked} = this.state;
 		const {rememberInfo} = this;
@@ -53,15 +53,35 @@ export default class App extends Component<{}> {
 		} else {
 			this.removeRemember(rememberInfo)
 		}
-		this.n++;
-		ajax.get('/login',this.state)
+		ajax.get('/login', this.state).then((data) => {
+			if (!data.success) {
+				return
+			}
+			this.setToken(data.token);
+		})
 
 	};
+	/**
+	 * 点击记住账号事件
+	 */
 	rememberMe = () => {
 		let {checked} = this.state;
 		this.setState({checked: !checked});
 	}
 
+	/**
+	 * 存储token
+	 * @param {String}token
+	 */
+	setToken = (token) => {
+		this.saveRemember('token', token)
+	}
+
+	/**
+	 * 记录账号，存入长久数据中
+	 * @param {String}type
+	 * @param {Object}data
+	 */
 	saveRemember = (type, data = {}) => {
 		// 使用key来保存数据。这些数据一般是全局独有的，常常需要调用的。
 		// 除非你手动移除，这些数据会被永久保存，而且默认不会过期。
@@ -75,6 +95,10 @@ export default class App extends Component<{}> {
 		});
 	}
 
+	/**
+	 * 读取用户记录的账号信息
+	 * @param key
+	 */
 	getRemember = (key) => {
 		// 读取
 		storage.load({
@@ -102,20 +126,10 @@ export default class App extends Component<{}> {
 			// 而不能在then以外处理
 			// 也没有办法“变成”同步返回
 			// 你也可以使用“看似”同步的async/await语法
-			console.log(ret);
 			this.setState(ret);
 		}).catch(err => {
 			//如果没有找到数据且没有sync方法，
 			//或者有其他异常，则在catch中返回
-			// console.warn(err.message);
-			// switch (err.name) {
-			// 	case 'NotFoundError':
-			// 		// TODO;
-			// 		break;
-			// 	case 'ExpiredError':
-			// 		// TODO
-			// 		break;
-			// }
 		})
 	}
 
