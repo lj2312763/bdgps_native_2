@@ -129,7 +129,7 @@ const ajax = {
 			fetch(this.options.url, body).then((res) => {
 				return res.json()
 			}).then((data) => {
-				//服务器返回失败信息
+				//服务器返回失败信息，shub
 				if (!data.success) {
 					onError(data.message);
 				}
