@@ -18,7 +18,8 @@ import {
 import {Button} from 'antd-mobile';
 import DeviceInfo from 'react-native-device-info'
 // import Storage from 'react-native-storage';
-import ajax from './src/common/ajax';
+import ajax from '../common/ajax';
+import {NavigationActions} from 'react-navigation'
 
 // const instructions = Platform.select({
 // 	ios: 'Press Cmd+R to reload,\n' +
@@ -46,20 +47,29 @@ export default class App extends Component<{}> {
 	 * 登录
 	 */
 	login = () => {
-		const {checked} = this.state;
+		const {checked,userName,pwd} = this.state;
+		const { navigate,dispatch } = this.props.navigation;
 		const {rememberInfo} = this;
 		if (checked) {
 			this.saveRemember(rememberInfo, this.state);
 		} else {
 			this.removeRemember(rememberInfo)
 		}
-		ajax.get('/login', this.state).then((data) => {
-			if (!data.success) {
-				return
-			}
-			this.setToken(data.token);
-		})
+		ajax.get('/user/login', {userName,pwd}).then((data) => {
+			if (data.success) {//
+				//重置路由，让Home作为第一个路由
+				let resetAction = NavigationActions.reset({
+					index: 0,
+					actions: [
+						NavigationActions.navigate({routeName:'Home'})//要跳转到的页面名字
+					]
+				});
+				dispatch(resetAction);
+				// navigate('Home');
 
+
+			}
+		})
 	};
 	/**
 	 * 点击记住账号事件
@@ -148,7 +158,7 @@ export default class App extends Component<{}> {
 		let {userName, pwd, checked} = this.state;
 		return (
 			<View style={styles.container}>
-				<Image source={require('./src/images/login-bg.jpg')} style={{position: 'absolute', zIndex: -1}}/>
+				<Image source={require('../images/login-bg.jpg')} style={{position: 'absolute', zIndex: -1}}/>
 				<Text style={styles.welcome}>
 					北斗定位监控系统
 				</Text>
@@ -216,6 +226,10 @@ const styles = StyleSheet.create({
 	},
 	input: {
 		width: 150,
+		// underlineColor:'transparent',
+		textDecorationColor:0,
+		borderBottomWidth:0,
+		textDecorationLine:"none"
 	},
 	checked: {},
 	btn: {

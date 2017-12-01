@@ -18,11 +18,14 @@
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-react": "^7.1.0",
     "eslint-plugin-react-native": "^2.3.2",
+    "prop-types": "^15.6.0",
     "react": "16.0.0-beta.5",
     "react-dom": "^16.0.0",
     "react-native": "0.49.5",
+    "react-native-baidu-map": "^0.6.0",
     "react-native-device-info": "^0.12.1",
-    "react-native-storage": "^0.2.2"
+    "react-native-storage": "^0.2.2",
+    "react-navigation": "^1.0.0-beta.21"
   },
   "devDependencies": {
     "babel-jest": "21.2.0",
