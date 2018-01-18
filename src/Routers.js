@@ -20,9 +20,9 @@ import Test1 from './Components/Test1'
 import Login from './Components/Login'
 import RealAlarm from './Components/RealAlarm'
 
-const ShiTuIcon = require('./images/ShiTu.png');
-const GankIcon = require('./images/Gank.png');
-const MainIcon = require('./images/Main.png');
+// const ShiTuIcon = require('./images/ShiTu.png');
+// const GankIcon = require('./images/Gank.png');
+// const MainIcon = require('./images/Main.png');
 
 const MyTab = TabNavigator(
 	{
@@ -33,14 +33,14 @@ const MyTab = TabNavigator(
 				header: null,
 				gesturesEnabled: false, // 是否支持滑动返回收拾，iOS默认支持，安卓默认关闭
 				tabBarVisible: true, // 是否隐藏标签栏。默认不隐藏(true)
-				tabBarIcon: (({tintColor, focused}) => {
-					return (
-						<Image
-							source={!focused ? ShiTuIcon : ShiTuIcon}
-							style={[{height: 35, width: 35}, {tintColor: tintColor}]}
-						/>
-					)
-				}), // 设置标签栏的图标。需要单独设置。
+				// tabBarIcon: (({tintColor, focused}) => {
+				// 	return (
+				// 		<Image
+				// 			source={!focused ? ShiTuIcon : ShiTuIcon}
+				// 			style={[{height: 35, width: 35}, {tintColor: tintColor}]}
+				// 		/>
+				// 	)
+				// }), // 设置标签栏的图标。需要单独设置。
 				tabBarLabel: '选车', // 设置标签栏的title。推荐这个方式。
 			})
 		},
@@ -51,14 +51,14 @@ const MyTab = TabNavigator(
 				header: null,
 				gesturesEnabled: false, // 是否支持滑动返回收拾，iOS默认支持，安卓默认关闭
 				tabBarVisible: true, // 是否隐藏标签栏。默认不隐藏(true)
-				tabBarIcon: (({tintColor, focused}) => {
-					return (
-						<Image
-							source={!focused ? ShiTuIcon : ShiTuIcon}
-							style={[{height: 35, width: 35}, {tintColor: tintColor}]}
-						/>
-					)
-				}), // 设置标签栏的图标。需要单独设置。
+				// tabBarIcon: (({tintColor, focused}) => {
+				// 	return (
+				// 		<Image
+				// 			source={!focused ? ShiTuIcon : ShiTuIcon}
+				// 			style={[{height: 35, width: 35}, {tintColor: tintColor}]}
+				// 		/>
+				// 	)
+				// }), // 设置标签栏的图标。需要单独设置。
 				tabBarLabel: '实时告警', // 设置标签栏的title。推荐这个方式。
 			})
 		},
@@ -69,14 +69,14 @@ const MyTab = TabNavigator(
 				header: null,
 				gesturesEnabled: false, // 是否支持滑动返回收拾，iOS默认支持，安卓默认关闭
 				tabBarVisible: true, // 是否隐藏标签栏。默认不隐藏(true)
-				tabBarIcon: (({tintColor, focused}) => {
-					return (
-						<Image
-							source={!focused ? ShiTuIcon : ShiTuIcon}
-							style={[{height: 35, width: 35}, {tintColor: tintColor}]}
-						/>
-					)
-				}), // 设置标签栏的图标。需要单独设置。
+				// tabBarIcon: (({tintColor, focused}) => {
+				// 	return (
+				// 		<Image
+				// 			source={!focused ? ShiTuIcon : ShiTuIcon}
+				// 			style={[{height: 35, width: 35}, {tintColor: tintColor}]}
+				// 		/>
+				// 	)
+				// }), // 设置标签栏的图标。需要单独设置。
 				tabBarLabel: '我的', // 设置标签栏的title。推荐这个方式。
 			})
 		},

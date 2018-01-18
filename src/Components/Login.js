@@ -55,7 +55,8 @@ export default class App extends Component<{}> {
 		} else {
 			this.removeRemember(rememberInfo)
 		}
-		ajax.get('/user/login', {userName,pwd}).then((data) => {
+		ajax.get('/login', {username:userName,pwd})
+			.then((data) => {
 			if (data.success) {//
 				//重置路由，让Home作为第一个路由
 				let resetAction = NavigationActions.reset({
@@ -66,8 +67,6 @@ export default class App extends Component<{}> {
 				});
 				dispatch(resetAction);
 				// navigate('Home');
-
-
 			}
 		})
 	};
