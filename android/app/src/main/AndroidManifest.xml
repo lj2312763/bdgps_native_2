@@ -2,7 +2,10 @@
     package="com.bdgps_native"
     android:versionCode="1"
     android:versionName="1.0">
-
+    <!-- 这个权限用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- 这个权限用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.BLUETOOTH"/>         <!-- for Device Name -->
@@ -22,6 +25,9 @@
         android:label="@string/app_name"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
         android:windowSoftInputMode="adjustResize">
+          <meta-data
+                  android:name="com.baidu.lbsapi.API_KEY"
+                  android:value="f8QfUGCC5XBQEGeAAjfKil3tw4qEUixL"/> <!--申请到的baidu地图app key ，这个是主要添加的标签，之后再说如何获取百度的key-->
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
