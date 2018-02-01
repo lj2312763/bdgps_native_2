@@ -5,7 +5,7 @@
  **/
 'use strict';
 import React, {Component} from 'react';
-import {Platform} from 'react-native';
+import {Platform,AppState} from 'react-native';
 import {Drawer, Lightbox, Overlay, Reducer, Router, Scene, Stack, Tabs,} from 'react-native-router-flux';
 
 import Login from './components/scene/user/Login'
@@ -39,12 +39,18 @@ const reducerCreate = params => {
 
 export default class App extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
+		this.state={
+			appState:AppState.currentState
+		}
 	}
+
 
 	loginFlag = false;
 
 	render() {
+		console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+		console.log(AppState);
 		return (
 			<Router createReducer={reducerCreate} getSceneStyle={getSceneStyle}>
 				<Stack key="root" hideTabBar navigationBarStyle={{backgroundColor: '#25A2E1'}}
